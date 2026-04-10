@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMC Flowers | Luxury Event Planner & Floral Design Miami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --gold-brand: #c5a059;
+            --dark-brand: #1a1a1a;
+            --stone-brand: #f4f2f0;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-brand);
+            background-color: white;
+            overflow-x: hidden;
+        }
+        .serif { font-family: 'Playfair Display', serif; }
+        .cinzel { font-family: 'Cinzel', serif; }
+
+        /* Estilo Hero con subrayado sutil corregido */
+        .hero-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .hero-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            width: 100%;
+            height: 0.5px;
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        /* Nav Transition */
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            height: 80px !important;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.02);
+        }
+
+        /* Iconos de redes sociales circulares corregidos */
+        .social-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid #333;
+            background-color: #333;
+            color: #ffffff;
+        }
+        .social-circle.solid {
+            border: 1px solid #333;
+            background-color: #333;
+            color: #ffffff;
+        }
+        .social-circle:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold-brand);
+            color: #ffffff;/*var(--gold-brand);*/
+        }
+
+        /* Ajustes de tipografía de botones */
+        .btn-luxury {
+            letter-spacing: 0.25em;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        /* Imágenes con overlay sutil */
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.03);
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #f9f9f9; }
+        ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-brand); }
+
+        nav#main-nav{
+            color: #ffffff;
+        }
+
+        /* Estado cuando el usuario ha bajado (scroll) */
+        #main-nav.nav-scrolled {
+            background-color: #ffffff; /* El color de fondo que desees */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Opcional: una sombra para dar profundidad */
+        }
+
+        /* Si necesitas cambiar el color de los enlaces o el logo al mismo tiempo */
+        #main-nav.nav-scrolled a, 
+        #main-nav.nav-scrolled button {
+            color: #000000; /* Color del texto cuando el fondo es blanco */
+        }
+
+        /* Por defecto, ocultamos el logo oscuro */
+        #main-nav .logo-dark {display: none;}
+
+        /* Cuando bajamos (scroll), ocultamos el blanco y mostramos el oscuro */
+        #main-nav.nav-scrolled .logo-light {display: none;}
+        #main-nav.nav-scrolled .logo-dark {display: block;}
+</style>
+
+</head>
+<body class="antialiased">
+
+    <!-- NAVEGACIÓN -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 h-24 flex items-center">
+        <div class="max-w-7xl mx-auto w-full px-8 flex justify-between items-center">
+            <!-- Logo ajustado -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <!--span class="text-xl md:text-2xl font-medium tracking-[0.15em] cinzel leading-none transition-colors group-hover:text-gold-brand">LMC FLOWERS</span>
+                <span class="text-[7px] md:text-[8px] tracking-[0.5em] uppercase opacity-60 mt-1.5 font-medium">LUXURY PLANNER - MIAMI</span-->
+
+                <a href="#" class="flex items-center cursor-pointer">
+                    <img src="images/logo-demo-2.svg" alt="LMC Flowers" class="h-12 w-auto logo-light">
+                    <img src="images/logo-demo-3.svg" alt="LMC Flowers" class="h-12 w-auto hidden logo-dark">
+                </a>
+            </div>
+
+            <!-- Menú Central -->
+            <div class="hidden lg:flex items-center space-x-10 text-[10px] font-medium uppercase tracking-[0.25em]">
+                <a href="#" class="hover:text-gold-brand transition relative after:content-[''] after:absolute after:w-0 after:h-[1px] after:bg-gold-brand after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Inicio</a>
+                <a href="#servicios" class="hover:text-gold-brand transition">Servicios</a>
+                <a href="#portfolio" class="hover:text-gold-brand transition">Portafolio</a>
+                <a href="#shop" class="hover:text-gold-brand transition">Shop</a>
+                <a href="#blog" class="hover:text-gold-brand transition">Diario</a>
+            </div>
+
+            <!-- Acciones -->
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-4">
+                    <button class="hover:text-gold-brand transition"><i data-lucide="search" class="w-4 h-4"></i></button>
+                    <div class="relative cursor-pointer hover:text-gold-brand transition">
+                        <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                        <span class="absolute -top-1.5 -right-1.5 bg-black text-white text-[8px] w-3 h-3 rounded-full flex items-center justify-center">0</span>
+                    </div>
+                </div>
+                <div class="hidden md:block h-6 w-[0.5px] bg-gray-200 mx-2"></div>
+                <a href="#contacto" class="hidden md:block btn-luxury border border-black/10 px-6 py-2.5 hover:bg-black hover:text-white hover:border-black">Cotizar ahora</a>
+                <button class="text-[9px] font-bold opacity-40 hover:opacity-100 transition uppercase tracking-tighter">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=2000" alt="LMC Flowers Hero" class="w-full h-full object-cover opacity-50 scale-105 animate-[subtle-zoom_20s_infinite_alternate]">
+        </div>
+        
+        <div class="relative z-10 text-center text-white px-6">
+            <h1 class="text-4xl md:text-7xl serif italic mb-10 leading-[1.1] md:leading-[1.15]">
+                <span class="hero-underline">Flores que dicen lo que las</span><br>
+                <span class="hero-underline">palabras no pueden.</span>
+            </h1>
+            <p class="text-[10px] md:text-xs tracking-[0.4em] font-light uppercase max-w-xl mx-auto leading-loose mb-12 opacity-80">
+                Diseño floral de alta gama para bodas y eventos corporativos en el sur de la Florida.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#portfolio" class="btn-luxury px-10 py-4 border border-white/30 hover:bg-white hover:text-black hover:border-white">Ver Portafolio</a>
+                <a href="#contacto" class="btn-luxury px-10 py-4 bg-white text-black hover:bg-gold-brand hover:text-white hover:border-gold-brand">Contáctanos</a>
+            </div>
+        </div>
+
+        <!-- Slider Dots -->
+        <div class="absolute bottom-10 w-full flex justify-center space-x-4 z-20">
+            <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+        </div>
+    </header>
+
+    <!-- CATEGORY STRIP -->
+    <div class="bg-white border-b border-gray-100 py-7">
+        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center text-[9px] md:text-[10px] tracking-[0.45em] uppercase opacity-40 font-bold whitespace-nowrap overflow-x-auto no-scrollbar">
+            <span>Bodas</span>
+            <span class="mx-2">•</span>
+            <span>Quinceañeras</span>
+            <span class="mx-2">•</span>
+            <span>Lanzamientos</span>
+            <span class="mx-2">•</span>
+            <span>Galas Corporativas</span>
+            <span class="mx-2">•</span>
+            <span>Sociales</span>
+            <span class="mx-2">•</span>
+            <span>Miami Delivery</span>
+        </div>
+    </div>
+
+    <!-- SECCIÓN SERVICIOS -->
+    <section id="servicios" class="py-32 bg-stone-50/50">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-20">
+                <div class="max-w-2xl">
+                    <span class="text-[10px] tracking-[0.5em] text-gold-brand font-bold uppercase mb-4 block">Nuestro Expertizaje</span>
+                    <h2 class="text-4xl md:text-5xl serif italic mb-6">Floral Design & Event Production</h2>
+                </div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-medium mt-4 border-b border-gray-200 pb-2">Since 2024 • Miami FL</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Servicio 1 -->
+                <div class="group cursor-pointer">
+                    <div class="image-container aspect-[3/4] mb-8">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" alt="Bodas" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h3 class="text-xl serif italic mb-2">Bodas de Destino</h3>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Full Service Decoration</p>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all text-gold-brand"></i>
+                    </div>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="group cursor-pointer">
+                    <div class="image-container aspect-[3/4] mb-8">
+                        <img src="https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?auto=format&fit=crop&q=80&w=800" alt="Corporativos" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h3 class="text-xl serif italic mb-2">Eventos Corporativos</h3>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Brand Experience & Galas</p>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all text-gold-brand"></i>
+                    </div>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="group cursor-pointer">
+                    <div class="image-container aspect-[3/4] mb-8">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800" alt="Delivery" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h3 class="text-xl serif italic mb-2">Luxury Delivery</h3>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Exclusive Arrangements</p>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all text-gold-brand"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white pt-32 pb-16 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="grid md:grid-cols-4 gap-20 mb-24">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex flex-col mb-10">
+                        <!--span class="text-xl font-medium tracking-[0.2em] cinzel leading-none">LMC FLOWERS</span>
+                        <span class="text-[8px] tracking-[0.4em] uppercase opacity-40 mt-1.5 font-bold">LUXURY PLANNER</span-->
+                        <a href="#" class="block mb-10">
+                            <img src="images/logo-demo-3.svg" alt="LMC Flowers Logo" class="h-14 w-auto">
+                        </a>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-loose mb-10 max-w-xs font-light">
+                        Elevando la estética de tus celebraciones más importantes a través del arte floral y la producción impecable.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] mb-10 text-black">Explorar</h4>
+                    <ul class="text-[10px] text-gray-400 space-y-6 uppercase tracking-[0.2em] font-medium">
+                        <li><a href="#" class="hover:text-gold-brand transition">Servicios</a></li>
+                        <li><a href="#" class="hover:text-gold-brand transition">Galería</a></li>
+                        <li><a href="#" class="hover:text-gold-brand transition">Shop</a></li>
+                        <li><a href="#" class="hover:text-gold-brand transition">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] mb-10 text-black">Contacto</h4>
+                    <ul class="text-[10px] text-gray-400 space-y-5 uppercase tracking-[0.15em] font-medium leading-relaxed">
+                        <li>Miami, FL, USA</li>
+                        <li>info@lmcflowers.com</li>
+                        <li>+1 (305) 555 1234</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] mb-10 text-black uppercase">Redes Sociales</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-circle solid">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="social-circle">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="social-circle">
+                            <i class="fab fa-x-twitter text-sm"></i>
+                        </a>
+                        <a href="#" class="social-circle">
+                            <i class="fab fa-tiktok text-sm"></i>
+                        </a>
+                    </div>
+                    <p class="mt-8 text-[9px] text-gray-300 uppercase tracking-widest italic">Follow for daily inspiration</p>
+                </div>
+            </div>
+
+            <div class="pt-10 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-gray-300 gap-6">
+                <p>© 2026 LMC Group Miami. Crafted with excellence.</p>
+                <div class="flex space-x-10">
+                    <a href="#" class="hover:text-black transition">Políticas</a>
+                    <a href="#" class="hover:text-black transition">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 40) {
+                nav.classList.add('nav-scrolled');
+                nav.classList.remove('h-24');
+                nav.classList.add('h-20');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                nav.classList.add('h-24');
+                nav.classList.remove('h-20');
+            }
+        });
+
+        // Keyframe Animation Inyectado
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes subtle-zoom {
+                from { transform: scale(1.05); }
+                to { transform: scale(1.15); }
+            }
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
