@@ -70,7 +70,7 @@
         .social-circle:hover {
             transform: translateY(-2px);
             border-color: var(--gold-brand);
-            color: #ffffff;/*var(--gold-brand);*/
+            color: #ffffff;
         }
 
         /* Ajustes de tipografía de botones */
@@ -95,6 +95,15 @@
             pointer-events: none;
         }
 
+        /* Portfolio Specific Styling */
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .portfolio-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            transition: opacity 0.5s ease;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #f9f9f9; }
@@ -105,44 +114,41 @@
             color: #ffffff;
         }
 
-        /* Estado cuando el usuario ha bajado (scroll) */
         #main-nav.nav-scrolled {
-            background-color: #ffffff; /* El color de fondo que desees */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Opcional: una sombra para dar profundidad */
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* Si necesitas cambiar el color de los enlaces o el logo al mismo tiempo */
         #main-nav.nav-scrolled a, 
-        #main-nav.nav-scrolled button {
-            color: #000000; /* Color del texto cuando el fondo es blanco */
+        #main-nav.nav-scrolled button,
+        #main-nav.nav-scrolled .relative {
+            color: #000000;
         }
 
-        /* Por defecto, ocultamos el logo oscuro */
-        #main-nav .logo-dark {display: none;}
-
-        /* Cuando bajamos (scroll), ocultamos el blanco y mostramos el oscuro */
-        #main-nav.nav-scrolled .logo-light {display: none;}
-        #main-nav.nav-scrolled .logo-dark {display: block;}
-</style>
-
+        #main-nav .logo-dark { display: none; }
+        #main-nav.nav-scrolled .logo-light { display: none; }
+        #main-nav.nav-scrolled .logo-dark { display: block; }
+        
+        @keyframes subtle-zoom {
+            from { transform: scale(1.05); }
+            to { transform: scale(1.15); }
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
 <body class="antialiased">
 
     <!-- NAVEGACIÓN -->
     <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 h-24 flex items-center">
         <div class="max-w-7xl mx-auto w-full px-8 flex justify-between items-center">
-            <!-- Logo ajustado -->
             <div class="flex flex-col items-center group cursor-pointer">
-                <!--span class="text-xl md:text-2xl font-medium tracking-[0.15em] cinzel leading-none transition-colors group-hover:text-gold-brand">LMC FLOWERS</span>
-                <span class="text-[7px] md:text-[8px] tracking-[0.5em] uppercase opacity-60 mt-1.5 font-medium">LUXURY PLANNER - MIAMI</span-->
-
                 <a href="#" class="flex items-center cursor-pointer">
-                    <img src="images/logo-demo-2.svg" alt="LMC Flowers" class="h-12 w-auto logo-light">
-                    <img src="images/logo-demo-3.svg" alt="LMC Flowers" class="h-12 w-auto hidden logo-dark">
+                    <img src="https://adolfogelabert.github.io/lmcflowers/images/logo-demo-2.svg" alt="LMC Flowers" class="h-12 w-auto logo-light">
+                    <img src="https://adolfogelabert.github.io/lmcflowers/images/logo-demo-3.svg" alt="LMC Flowers" class="h-12 w-auto logo-dark">
                 </a>
             </div>
 
-            <!-- Menú Central -->
             <div class="hidden lg:flex items-center space-x-10 text-[10px] font-medium uppercase tracking-[0.25em]">
                 <a href="#" class="hover:text-gold-brand transition relative after:content-[''] after:absolute after:w-0 after:h-[1px] after:bg-gold-brand after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Inicio</a>
                 <a href="#servicios" class="hover:text-gold-brand transition">Servicios</a>
@@ -151,7 +157,6 @@
                 <a href="#blog" class="hover:text-gold-brand transition">Diario</a>
             </div>
 
-            <!-- Acciones -->
             <div class="flex items-center space-x-6">
                 <div class="flex items-center space-x-4">
                     <button class="hover:text-gold-brand transition"><i data-lucide="search" class="w-4 h-4"></i></button>
@@ -187,7 +192,6 @@
             </div>
         </div>
 
-        <!-- Slider Dots -->
         <div class="absolute bottom-10 w-full flex justify-center space-x-4 z-20">
             <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
             <div class="w-1.5 h-1.5 rounded-full bg-white/30"></div>
@@ -198,16 +202,11 @@
     <!-- CATEGORY STRIP -->
     <div class="bg-white border-b border-gray-100 py-7">
         <div class="max-w-7xl mx-auto px-8 flex justify-between items-center text-[9px] md:text-[10px] tracking-[0.45em] uppercase opacity-40 font-bold whitespace-nowrap overflow-x-auto no-scrollbar">
-            <span>Bodas</span>
-            <span class="mx-2">•</span>
-            <span>Quinceañeras</span>
-            <span class="mx-2">•</span>
-            <span>Lanzamientos</span>
-            <span class="mx-2">•</span>
-            <span>Galas Corporativas</span>
-            <span class="mx-2">•</span>
-            <span>Sociales</span>
-            <span class="mx-2">•</span>
+            <span>Bodas</span><span class="mx-2">•</span>
+            <span>Quinceañeras</span><span class="mx-2">•</span>
+            <span>Lanzamientos</span><span class="mx-2">•</span>
+            <span>Galas Corporativas</span><span class="mx-2">•</span>
+            <span>Sociales</span><span class="mx-2">•</span>
             <span>Miami Delivery</span>
         </div>
     </div>
@@ -224,7 +223,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-12">
-                <!-- Servicio 1 -->
                 <div class="group cursor-pointer">
                     <div class="image-container aspect-[3/4] mb-8">
                         <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" alt="Bodas" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
@@ -238,7 +236,6 @@
                     </div>
                 </div>
 
-                <!-- Servicio 2 -->
                 <div class="group cursor-pointer">
                     <div class="image-container aspect-[3/4] mb-8">
                         <img src="https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?auto=format&fit=crop&q=80&w=800" alt="Corporativos" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
@@ -252,7 +249,6 @@
                     </div>
                 </div>
 
-                <!-- Servicio 3 -->
                 <div class="group cursor-pointer">
                     <div class="image-container aspect-[3/4] mb-8">
                         <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800" alt="Delivery" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
@@ -269,16 +265,83 @@
         </div>
     </section>
 
+    <!-- NUEVA SECCIÓN: PORTFOLIO (GRID ASIMÉTRICO) -->
+    <section id="portfolio" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-24">
+                <span class="text-[10px] tracking-[0.6em] text-gray-400 font-bold uppercase mb-4 block">Visual Diary</span>
+                <h2 class="text-4xl md:text-6xl serif italic">Nuestras Creaciones</h2>
+            </div>
+
+            <!-- Grid de Portfolio -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                
+                <!-- Item 1: Large Vertical -->
+                <div class="md:col-span-4 portfolio-item relative group cursor-pointer overflow-hidden aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200" alt="The Vizcaya Wedding" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Coral Gables</p>
+                        <h4 class="text-2xl serif italic mb-4">The Vizcaya Wedding</h4>
+                        <div class="w-10 h-[1px] bg-gold-brand"></div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Horizontal -->
+                <div class="md:col-span-8 portfolio-item relative group cursor-pointer overflow-hidden aspect-video md:aspect-auto">
+                    <img src="https://images.unsplash.com/photo-1465495910483-0d6749ee9f4a?auto=format&fit=crop&q=80&w=1200" alt="Corporate Gala" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Miami Beach</p>
+                        <h4 class="text-2xl serif italic mb-4">Art Basel Gala 2025</h4>
+                        <div class="w-10 h-[1px] bg-gold-brand"></div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Square -->
+                <div class="md:col-span-5 portfolio-item relative group cursor-pointer overflow-hidden aspect-square">
+                    <img src="https://images.unsplash.com/photo-1507074125130-c3095368a6f3?auto=format&fit=crop&q=80&w=1000" alt="Minimalist Table" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Minimalism</p>
+                        <h4 class="text-2xl serif italic mb-4">White Orchid Soirée</h4>
+                        <div class="w-10 h-[1px] bg-gold-brand"></div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Portrait -->
+                <div class="md:col-span-3 portfolio-item relative group cursor-pointer overflow-hidden aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1525268771113-32d9e9020a97?auto=format&fit=crop&q=80&w=1000" alt="Engagement" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Design</p>
+                        <h4 class="text-2xl serif italic mb-4">The Engagement Bloom</h4>
+                        <div class="w-10 h-[1px] bg-gold-brand"></div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Small -->
+                <div class="md:col-span-4 portfolio-item relative group cursor-pointer overflow-hidden aspect-square md:aspect-auto">
+                    <img src="https://images.unsplash.com/photo-1544592732-83bb662a2ad7?auto=format&fit=crop&q=80&w=1000" alt="Luxury Bouquet" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Bespoke</p>
+                        <h4 class="text-2xl serif italic mb-4">Velvet Rose Concept</h4>
+                        <div class="w-10 h-[1px] bg-gold-brand"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Ver Más -->
+            <div class="mt-20 text-center">
+                <a href="#" class="btn-luxury inline-block px-12 py-5 border border-black hover:bg-black hover:text-white transition-all">Ver Galería Completa</a>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="bg-white pt-32 pb-16 border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-8">
             <div class="grid md:grid-cols-4 gap-20 mb-24">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex flex-col mb-10">
-                        <!--span class="text-xl font-medium tracking-[0.2em] cinzel leading-none">LMC FLOWERS</span>
-                        <span class="text-[8px] tracking-[0.4em] uppercase opacity-40 mt-1.5 font-bold">LUXURY PLANNER</span-->
                         <a href="#" class="block mb-10">
-                            <img src="images/logo-demo-3.svg" alt="LMC Flowers Logo" class="h-14 w-auto">
+                            <img src="https://adolfogelabert.github.io/lmcflowers/images/logo-demo-3.svg" alt="LMC Flowers Logo" class="h-14 w-auto">
                         </a>
                     </div>
                     <p class="text-xs text-gray-400 leading-loose mb-10 max-w-xs font-light">
@@ -289,10 +352,10 @@
                 <div>
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] mb-10 text-black">Explorar</h4>
                     <ul class="text-[10px] text-gray-400 space-y-6 uppercase tracking-[0.2em] font-medium">
-                        <li><a href="#" class="hover:text-gold-brand transition">Servicios</a></li>
-                        <li><a href="#" class="hover:text-gold-brand transition">Galería</a></li>
-                        <li><a href="#" class="hover:text-gold-brand transition">Shop</a></li>
-                        <li><a href="#" class="hover:text-gold-brand transition">Blog</a></li>
+                        <li><a href="#servicios" class="hover:text-gold-brand transition">Servicios</a></li>
+                        <li><a href="#portfolio" class="hover:text-gold-brand transition">Galería</a></li>
+                        <li><a href="#shop" class="hover:text-gold-brand transition">Shop</a></li>
+                        <li><a href="#blog" class="hover:text-gold-brand transition">Diario</a></li>
                     </ul>
                 </div>
 
@@ -352,18 +415,6 @@
                 nav.classList.remove('h-20');
             }
         });
-
-        // Keyframe Animation Inyectado
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes subtle-zoom {
-                from { transform: scale(1.05); }
-                to { transform: scale(1.15); }
-            }
-            .no-scrollbar::-webkit-scrollbar { display: none; }
-            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
