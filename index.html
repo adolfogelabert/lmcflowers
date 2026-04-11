@@ -137,7 +137,7 @@
             pointer-events: auto;
         }
         .mobile-menu-panel {
-            width: min(86vw, 360px);
+            width: 100%;/*min(86vw, 360px);*/
             height: 100%;
             margin-left: auto;
             background: #ffffff;
@@ -339,9 +339,49 @@
                 letter-spacing: 0.18em;
                 font-size: 9px;
             }
+            .site-footer {
+                padding-top: 3rem;
+                padding-bottom: 2.75rem;
+            }
+            .site-footer-grid {
+                gap: 2.5rem;
+                margin-bottom: 2.75rem;
+            }
+            .site-footer-brand {
+                text-align: center;
+            }
+            .site-footer-brand-logo {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            }
+            .site-footer-brand p {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 300px;
+                text-align: center;
+            }
+            .site-footer-col,
+            .site-footer-col ul,
+            .site-footer-col li,
+            .site-footer-col p,
+            .site-footer-heading,
+            .site-footer-legal,
+            .site-footer-legal p,
+            .site-footer-legal-links {
+                text-align: center;
+                justify-content: center;
+            }
+            .site-footer-heading {
+                margin-bottom: 1.25rem;
+            }
+            .site-footer-social-row {
+                justify-content: center;
+            }
             .hero-title {
                 font-size: 2.5rem;
                 line-height: 1.08;
+                margin-top: 48px;
             }
             .hero-subtitle {
                 letter-spacing: 0.24em;
@@ -419,6 +459,36 @@
                 bottom: 14px;
                 width: 40px;
                 height: 40px;
+            }
+            .site-footer {
+                padding-top: 2.25rem;
+                padding-bottom: 2rem;
+            }
+            .site-footer-grid {
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+            .site-footer-heading {
+                margin-bottom: 0.9rem;
+                font-size: 9px;
+            }
+            .site-footer-text {
+                font-size: 9px;
+            }
+            .site-footer-brand p {
+                margin-bottom: 1.6rem;
+            }
+            .site-footer-muted {
+                margin-top: 1rem;
+                font-size: 8px;
+            }
+            .footer-legal {
+                padding-top: 0.75rem;
+                gap: 0.65rem;
+                font-size: 8px;
+            }
+            .site-footer-legal-links {
+                gap: 1.75rem;
             }
             .hero-title {
                 font-size: 1.9rem;
@@ -799,9 +869,9 @@
     <!-- FOOTER -->
     <footer class="site-footer pt-20 md:pt-24 pb-14">
         <div class="max-w-7xl mx-auto px-5 md:px-8">
-            <div class="grid md:grid-cols-4 gap-12 md:gap-20 mb-16 md:mb-20">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex flex-col mb-10">
+            <div class="site-footer-grid grid md:grid-cols-4 gap-12 md:gap-20 mb-16 md:mb-20">
+                <div class="site-footer-brand col-span-1 md:col-span-1">
+                    <div class="site-footer-brand-logo flex flex-col mb-10">
                         <a href="#" class="block mb-10">
                             <img src="images/logo-demo-2.svg" alt="LMC Flowers Logo" class="h-12 w-auto">
                         </a>
@@ -811,7 +881,7 @@
                     </p>
                 </div>
 
-                <div>
+                <div class="site-footer-col">
                     <h4 class="site-footer-heading text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Explorar</h4>
                     <ul class="site-footer-text text-[10px] space-y-6 uppercase tracking-[0.2em] font-medium">
                         <li><a href="#servicios" class="site-footer-link">Servicios</a></li>
@@ -821,7 +891,7 @@
                     </ul>
                 </div>
 
-                <div>
+                <div class="site-footer-col">
                     <h4 class="site-footer-heading text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Contacto</h4>
                     <ul class="site-footer-text text-[10px] space-y-5 uppercase tracking-[0.15em] font-medium leading-relaxed">
                         <li>Miami, FL, USA</li>
@@ -830,9 +900,9 @@
                     </ul>
                 </div>
 
-                <div>
+                <div class="site-footer-col">
                     <h4 class="site-footer-heading text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Redes Sociales</h4>
-                    <div class="flex space-x-4">
+                    <div class="site-footer-social-row flex space-x-4">
                         <a href="#" class="social-circle solid">
                             <i class="fab fa-instagram text-sm"></i>
                         </a>
@@ -852,7 +922,7 @@
 
             <div class="footer-legal site-footer-legal pt-8 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.16em] md:tracking-[0.28em] gap-6 text-center md:text-left">
                 <p>© 2026 LMC Group Miami. Crafted with excellence.</p>
-                <div class="flex space-x-10">
+                <div class="site-footer-legal-links flex space-x-10">
                     <a href="#" class="site-footer-legal-link">Políticas</a>
                     <a href="#" class="site-footer-legal-link">Términos</a>
                 </div>
