@@ -17,15 +17,18 @@
             --gold-brand: #c5a059;
             --dark-brand: #1a1a1a;
             --stone-brand: #f4f2f0;
-            --footer-bg: #ffffff;
-            --footer-border: #e5e7eb;
-            --footer-legal-border: #f3f4f6;
-            --footer-heading: #111111;
-            --footer-text: #9ca3af;
-            --footer-muted: #d1d5db;
-            --footer-link-hover: #111111;
-            --footer-social-bg: #333333;
+            --footer-bg: #33363b;
+            --footer-border: rgba(255, 255, 255, 0.08);
+            --footer-legal-border: rgba(255, 255, 255, 0.26);
+            --footer-heading: #ffffff;
+            --footer-text: #d9dce2;
+            --footer-muted: #a8afbb;
+            --footer-link-hover: #ffffff;
+            --footer-social-bg: #454b55;
+            --footer-social-border: #5d646f;
             --footer-social-text: #ffffff;
+            --footer-social-hover-bg: #c5a059;
+            --footer-social-hover-text: #1a1a1a;
         }
         body {
             font-family: 'Montserrat', sans-serif;
@@ -153,6 +156,131 @@
         body.menu-open {
             overflow: hidden;
         }
+        .search-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+            z-index: 65;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 10vh 1rem 1rem;
+        }
+        .search-modal.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .search-modal-panel {
+            width: min(860px, 100%);
+            background: rgba(20, 20, 20, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            padding: 1rem;
+        }
+        .search-modal-input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            letter-spacing: 0.04em;
+        }
+        .search-modal-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        body.search-open {
+            overflow: hidden;
+        }
+        .nav-desktop-link {
+            position: relative;
+            transition: color 0.25s ease;
+        }
+        .nav-desktop-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 1px;
+            background: var(--gold-brand);
+            transition: width 0.25s ease;
+        }
+        .nav-desktop-link:hover {
+            color: var(--gold-brand);
+        }
+        .nav-desktop-link:hover::after {
+            width: 100%;
+        }
+        .lang-menu {
+            position: relative;
+        }
+        .lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            opacity: 0.55;
+            color: inherit;
+            transition: opacity 0.2s ease, color 0.2s ease;
+        }
+        .lang-trigger:hover {
+            opacity: 1;
+            color: var(--gold-brand);
+        }
+        .lang-flag {
+            width: 14px;
+            height: 14px;
+            border-radius: 9999px;
+            object-fit: cover;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+        }
+        .lang-dropdown {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 10px);
+            min-width: 140px;
+            background: rgba(255, 255, 255, 0.97);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            padding: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(5px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        }
+        .lang-menu.is-open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #111111;
+            border-radius: 8px;
+            padding: 0.5rem 0.55rem;
+        }
+        .lang-option:hover {
+            background: #f4f4f4;
+        }
+        .mobile-nav-cta {
+            display: none;
+        }
         .hero-cta-invert {
             background: #ffffff;
             color: #111111;
@@ -166,15 +294,16 @@
 
         /* Footer Theme (aislado de utilidades Tailwind) */
         .site-footer {
-            background-color: #333333;/*var(--footer-bg);*/
+            background-color: var(--footer-bg);
             border-top: 1px solid var(--footer-border);
-            color: #fff;
+            color: var(--footer-text);
         }
         .site-footer-heading {
-            /*color: var(--footer-heading);*/
-            color: #ffffff;
+            color: var(--footer-heading);
         }
-        .site-footer-text {color: #ffffff;}
+        .site-footer-text {
+            color: var(--footer-text);
+        }
 
         .site-footer-muted {
             color: var(--footer-muted);
@@ -199,9 +328,15 @@
         }
         .site-footer .social-circle,
         .site-footer .social-circle.solid {
-            border-color: var(--footer-social-bg);
+            border-color: var(--footer-social-border);
             background-color: var(--footer-social-bg);
             color: var(--footer-social-text);
+        }
+        .site-footer .social-circle:hover,
+        .site-footer .social-circle.solid:hover {
+            border-color: var(--footer-social-hover-bg);
+            background-color: var(--footer-social-hover-bg);
+            color: var(--footer-social-hover-text);
         }
         .back-to-top {
             position: fixed;
@@ -320,6 +455,9 @@
         .hero-title {
             text-wrap: balance;
         }
+        .hero-slider-dots {
+            bottom: 2.25rem;
+        }
 
         @media (max-width: 1024px) {
             .shop-card-image {
@@ -389,40 +527,102 @@
             }
         }
 
+        /* NAV SHELL BASE - layout manejado 100% en CSS para evitar conflictos con Tailwind CDN */
+        .nav-shell {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .nav-shell {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
         @media (max-width: 640px) {
-            .lang-toggle {
-                display: none;
+            #main-nav {
+                height: auto;
+                padding-top: 0.65rem;
+                padding-bottom: 0.65rem;
+                background: transparent;
+                align-items: flex-start;
             }
             .nav-shell {
-                padding-left: 0.85rem;
-                padding-right: 0.85rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
                 display: grid;
-                grid-template-columns: minmax(0, 1fr) auto;
+                grid-template-columns: 1fr auto;
+                grid-template-areas:
+                    "brand controls"
+                    "cta   cta";
                 align-items: center;
-                column-gap: 0.9rem;
-            }
-            .nav-brand {
-                margin-left: -1px;
+                column-gap: 0.75rem;
+                row-gap: 0.5rem;
             }
             .nav-left {
-                flex: 1 1 auto;
-                min-width: 0;
+                grid-area: brand;
                 justify-content: flex-start;
-                overflow: hidden;
             }
             .nav-right {
-                flex: 0 0 auto;
+                grid-area: controls;
                 justify-content: flex-end;
-                gap: 0.6rem;
+                gap: 0.5rem;
             }
             .nav-icons {
-                gap: 0.85rem;
+                gap: 0.6rem;
             }
             .nav-icons button,
             .nav-icons .relative {
-                width: 24px;
+                width: 22px;
                 display: inline-flex;
                 justify-content: center;
+            }
+            .lang-menu {
+                display: block;
+            }
+            .lang-trigger {
+                opacity: 1;
+                font-size: 8px;
+                gap: 0.25rem;
+                letter-spacing: 0.04em;
+            }
+            .lang-flag {
+                width: 12px;
+                height: 12px;
+                border-color: rgba(255, 255, 255, 0.35);
+            }
+            .mobile-nav-cta {
+                grid-area: cta;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 0.38rem 1rem;
+                text-align: center;
+                font-size: 0.58rem;
+                letter-spacing: 0.18em;
+                border: 1px solid rgba(255, 255, 255, 0.72);
+                color: #ffffff;
+                background: transparent;
+            }
+            #main-nav.nav-scrolled {
+                backdrop-filter: none;
+                background: #ffffff;
+                box-shadow: 0 2px 14px rgba(0, 0, 0, 0.09);
+                padding-bottom: 5rem;
+            }
+            #main-nav.nav-scrolled .mobile-nav-cta {
+                border-color: rgba(0, 0, 0, 0.5);
+                color: #111111;
+                background: transparent;
+            }
+            #main-nav.nav-scrolled .mobile-nav-cta:hover {
+                background: #111111;
+                color: #ffffff;
+                border-color: #111111;
             }
             .logo-light,
             .logo-dark {
@@ -435,6 +635,15 @@
             .hero-subtitle {
                 font-size: 9px;
                 letter-spacing: 0.2em;
+            }
+            .hero-content {
+                padding-top: 7.5rem;
+            }
+            .hero-cta-group {
+                margin-bottom: 2.4rem;
+            }
+            .hero-slider-dots {
+                bottom: 0.55rem;
             }
             .shop-price {
                 font-size: 34px;
@@ -452,7 +661,9 @@
 
         @media (max-width: 480px) {
             #main-nav {
-                height: 76px;
+                height: auto;
+                padding-top: 0.6rem;
+                padding-bottom: 0.6rem;
             }
             .back-to-top {
                 right: 14px;
@@ -497,7 +708,13 @@
                 letter-spacing: 0.16em;
             }
             .hero-content {
-                padding-top: 5.5rem;
+                padding-top: 10.5rem;
+            }
+            .hero-cta-group {
+                margin-bottom: 2.75rem;
+            }
+            .hero-slider-dots {
+                bottom: 1.3rem;
             }
             .footer-legal {
                 padding-top: 1rem;
@@ -524,7 +741,7 @@
 
     <!-- NAVEGACIÓN -->
     <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 h-24 flex items-center">
-        <div class="nav-shell max-w-7xl mx-auto w-full px-6 md:px-8 flex justify-between items-center">
+        <div class="nav-shell max-w-7xl mx-auto w-full">
             <div class="nav-left flex flex-col items-center group cursor-pointer">
                 <a href="#" class="nav-brand flex items-center cursor-pointer">
                     <img src="images/logo-demo-2.svg" alt="LMC Flowers" class="h-10 max-[480px]:h-8 md:h-12 w-auto logo-light">
@@ -533,11 +750,11 @@
             </div>
 
             <div class="hidden lg:flex items-center space-x-8 text-[9px] font-medium uppercase tracking-[0.26em]">
-                <a href="#" class="hover:text-gold-brand transition relative after:content-[''] after:absolute after:w-0 after:h-[1px] after:bg-gold-brand after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Inicio</a>
-                <a href="#servicios" class="hover:text-gold-brand transition">Servicios</a>
-                <a href="#portfolio" class="hover:text-gold-brand transition">Portafolio</a>
-                <a href="#shop" class="hover:text-gold-brand transition">Shop</a>
-                <a href="#blog" class="hover:text-gold-brand transition">Diario</a>
+                <a href="#" class="nav-desktop-link">Inicio</a>
+                <a href="#servicios" class="nav-desktop-link">Servicios</a>
+                <a href="#portfolio" class="nav-desktop-link">Portafolio</a>
+                <a href="#shop" class="nav-desktop-link">Shop</a>
+                <a href="#blog" class="nav-desktop-link">Diario</a>
             </div>
 
             <div class="nav-right flex items-center md:space-x-6">
@@ -545,7 +762,7 @@
                     <button id="mobile-menu-open" class="md:hidden hover:text-gold-brand transition" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu-modal">
                         <i data-lucide="menu" class="w-4 h-4"></i>
                     </button>
-                    <button class="hover:text-gold-brand transition"><i data-lucide="search" class="w-4 h-4"></i></button>
+                    <button id="search-modal-open" class="hover:text-gold-brand transition" aria-label="Abrir buscador"><i data-lucide="search" class="w-4 h-4"></i></button>
                     <div class="relative cursor-pointer hover:text-gold-brand transition">
                         <i data-lucide="shopping-cart" class="w-4 h-4"></i>
                         <span class="absolute -top-1.5 -right-1.5 bg-black text-white text-[8px] w-3 h-3 rounded-full flex items-center justify-center">0</span>
@@ -553,10 +770,39 @@
                 </div>
                 <div class="hidden md:block h-6 w-[0.5px] bg-gray-200 mx-2"></div>
                 <a href="#contacto" class="hidden md:block nav-cta btn-luxury border border-black/10 px-5 py-2 hover:bg-black hover:text-white hover:border-black">Cotizar ahora</a>
-                <button class="lang-toggle text-[9px] font-bold opacity-40 hover:opacity-100 transition uppercase tracking-tighter">EN</button>
+                <div id="lang-menu" class="lang-menu">
+                    <button id="lang-trigger" class="lang-trigger" aria-label="Abrir selector de idioma" aria-expanded="false">
+                        <img id="lang-current-flag" class="lang-flag" src="images/flag-us.svg" alt="Bandera idioma actual">
+                        <span id="lang-current-code">EN</span>
+                    </button>
+                    <div class="lang-dropdown" role="menu">
+                        <button class="lang-option" role="menuitem" data-lang-code="EN" data-lang-flag="images/flag-us.svg">
+                            <img class="lang-flag" src="images/flag-us.svg" alt="Bandera USA">
+                            <span>English</span>
+                        </button>
+                        <button class="lang-option" role="menuitem" data-lang-code="MX" data-lang-flag="images/flag-mx.svg">
+                            <img class="lang-flag" src="images/flag-mx.svg" alt="Bandera Mexico">
+                            <span>Espanol</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+            <a href="#contacto" class="mobile-nav-cta btn-luxury md:hidden">Cotizar ahora</a>
         </div>
     </nav>
+
+    <!-- MODAL BUSCADOR -->
+    <div id="search-modal" class="search-modal" aria-hidden="true">
+        <div class="search-modal-panel">
+            <div class="flex items-center gap-2">
+                <i data-lucide="search" class="w-4 h-4 text-white/70"></i>
+                <input id="search-modal-input" class="search-modal-input" type="text" placeholder="Buscar en el sitio...">
+                <button id="search-modal-close" class="text-white/80 hover:text-white px-2" aria-label="Cerrar buscador">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- MENÚ MOBILE MODAL -->
     <div id="mobile-menu-modal" class="mobile-menu-modal md:hidden" aria-hidden="true">
@@ -569,7 +815,7 @@
             </div>
 
             <div class="px-6 pt-7 pb-6 flex-1 overflow-y-auto">
-                <nav class="flex flex-col gap-5 text-[11px] uppercase tracking-[0.24em] font-medium text-[#1a1a1a]">
+                <nav class="flex flex-col gap-5 text-[11px] uppercase tracking-[0.24em] font-medium text-[#1a1a1a] items-center text-center">
                     <a href="#" class="mobile-menu-link">Inicio</a>
                     <a href="#servicios" class="mobile-menu-link">Servicios</a>
                     <a href="#portfolio" class="mobile-menu-link">Portafolio</a>
@@ -578,7 +824,9 @@
                     <a href="#contacto" class="mobile-menu-link">Contacto</a>
                 </nav>
 
-                <a href="#contacto" class="mobile-menu-link btn-luxury mt-8 inline-block border border-black px-5 py-3 text-center hover:bg-black hover:text-white">Cotizar ahora</a>
+                <div class="flex justify-center">
+                    <a href="#contacto" class="mobile-menu-link btn-luxury mt-8 inline-block border border-black px-5 py-3 text-center hover:bg-black hover:text-white">Cotizar ahora</a>
+                </div>
             </div>
         </div>
     </div>
@@ -597,13 +845,13 @@
             <p class="hero-subtitle text-[10px] md:text-xs tracking-[0.35em] font-light uppercase max-w-xl mx-auto leading-loose mb-10 md:mb-12 opacity-80">
                 Diseño floral de alta gama para bodas y eventos corporativos en el sur de la Florida.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
+            <div class="hero-cta-group flex flex-col sm:flex-row justify-center gap-6">
                 <a href="#portfolio" class="btn-luxury w-full sm:w-auto max-w-[280px] sm:max-w-none mx-auto px-10 py-4 border border-white/30 hover:bg-white hover:text-black hover:border-white">Ver Portafolio</a>
                 <a href="#contacto" class="hero-cta-invert btn-luxury w-full sm:w-auto max-w-[280px] sm:max-w-none mx-auto px-10 py-4">Contáctanos</a>
             </div>
         </div>
 
-        <div class="absolute bottom-10 w-full flex justify-center space-x-4 z-20">
+        <div class="hero-slider-dots absolute w-full flex justify-center space-x-4 z-20">
             <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
             <div class="w-1.5 h-1.5 rounded-full bg-white/30"></div>
             <div class="w-1.5 h-1.5 rounded-full bg-white/30"></div>
@@ -935,6 +1183,14 @@
         lucide.createIcons();
 
         const backToTopButton = document.getElementById('back-to-top');
+        const searchModal = document.getElementById('search-modal');
+        const searchModalOpen = document.getElementById('search-modal-open');
+        const searchModalClose = document.getElementById('search-modal-close');
+        const searchModalInput = document.getElementById('search-modal-input');
+        const langMenu = document.getElementById('lang-menu');
+        const langTrigger = document.getElementById('lang-trigger');
+        const langCurrentCode = document.getElementById('lang-current-code');
+        const langCurrentFlag = document.getElementById('lang-current-flag');
 
         const smoothScrollToTop = (duration = 1100) => {
             const startY = window.scrollY || window.pageYOffset;
@@ -983,6 +1239,59 @@
             backToTopButton.addEventListener('click', () => smoothScrollToTop(1100));
         }
 
+        const openSearchModal = () => {
+            if (!searchModal) return;
+            searchModal.classList.add('is-open');
+            searchModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('search-open');
+            if (searchModalInput) {
+                setTimeout(() => searchModalInput.focus(), 50);
+            }
+        };
+
+        const closeSearchModal = () => {
+            if (!searchModal) return;
+            searchModal.classList.remove('is-open');
+            searchModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('search-open');
+        };
+
+        if (searchModalOpen) {
+            searchModalOpen.addEventListener('click', openSearchModal);
+        }
+        if (searchModalClose) {
+            searchModalClose.addEventListener('click', closeSearchModal);
+        }
+        if (searchModal) {
+            searchModal.addEventListener('click', (event) => {
+                if (event.target === searchModal) {
+                    closeSearchModal();
+                }
+            });
+        }
+
+        if (langTrigger && langMenu) {
+            langTrigger.addEventListener('click', () => {
+                const isOpen = langMenu.classList.toggle('is-open');
+                langTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            langMenu.querySelectorAll('.lang-option').forEach((option) => {
+                option.addEventListener('click', () => {
+                    const code = option.getAttribute('data-lang-code');
+                    const flag = option.getAttribute('data-lang-flag');
+                    if (code && langCurrentCode) {
+                        langCurrentCode.textContent = code;
+                    }
+                    if (flag && langCurrentFlag) {
+                        langCurrentFlag.src = flag;
+                    }
+                    langMenu.classList.remove('is-open');
+                    langTrigger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
         // Mobile menu modal
         const menuOpenButton = document.getElementById('mobile-menu-open');
         const menuCloseButton = document.getElementById('mobile-menu-close');
@@ -1026,8 +1335,22 @@
             link.addEventListener('click', closeMobileMenu);
         });
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && mobileMenuModal && mobileMenuModal.classList.contains('is-open')) {
-                closeMobileMenu();
+            if (event.key === 'Escape') {
+                if (mobileMenuModal && mobileMenuModal.classList.contains('is-open')) {
+                    closeMobileMenu();
+                }
+                if (searchModal && searchModal.classList.contains('is-open')) {
+                    closeSearchModal();
+                }
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (langMenu && langMenu.classList.contains('is-open') && !langMenu.contains(event.target)) {
+                langMenu.classList.remove('is-open');
+                if (langTrigger) {
+                    langTrigger.setAttribute('aria-expanded', 'false');
+                }
             }
         });
     </script>
