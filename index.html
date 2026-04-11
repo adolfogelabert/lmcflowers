@@ -17,12 +17,24 @@
             --gold-brand: #c5a059;
             --dark-brand: #1a1a1a;
             --stone-brand: #f4f2f0;
+            --footer-bg: #ffffff;
+            --footer-border: #e5e7eb;
+            --footer-legal-border: #f3f4f6;
+            --footer-heading: #111111;
+            --footer-text: #9ca3af;
+            --footer-muted: #d1d5db;
+            --footer-link-hover: #111111;
+            --footer-social-bg: #333333;
+            --footer-social-text: #ffffff;
         }
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--dark-brand);
             background-color: white;
             overflow-x: hidden;
+        }
+        html {
+            scroll-behavior: smooth;
         }
         .serif { font-family: 'Playfair Display', serif; }
         .cinzel { font-family: 'Cinzel', serif; }
@@ -103,6 +115,122 @@
             background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
             transition: opacity 0.5s ease;
         }
+        .portfolio-focus-mid {
+            object-position: 50% 42%;
+        }
+        .portfolio-row-two-card {
+            height: 100%;
+        }
+        .mobile-menu-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 8, 8, 0.56);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+            z-index: 60;
+        }
+        .mobile-menu-modal.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .mobile-menu-panel {
+            width: min(86vw, 360px);
+            height: 100%;
+            margin-left: auto;
+            background: #ffffff;
+            transform: translateX(100%);
+            transition: transform 0.28s ease;
+            box-shadow: -20px 0 45px rgba(0, 0, 0, 0.18);
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-menu-modal.is-open .mobile-menu-panel {
+            transform: translateX(0);
+        }
+        body.menu-open {
+            overflow: hidden;
+        }
+        .hero-cta-invert {
+            background: #ffffff;
+            color: #111111;
+            border: 1px solid #ffffff;
+        }
+        .hero-cta-invert:hover {
+            background: #111111;
+            color: #ffffff;
+            border-color: #111111;
+        }
+
+        /* Footer Theme (aislado de utilidades Tailwind) */
+        .site-footer {
+            background-color: #333333;/*var(--footer-bg);*/
+            border-top: 1px solid var(--footer-border);
+            color: #fff;
+        }
+        .site-footer-heading {
+            /*color: var(--footer-heading);*/
+            color: #ffffff;
+        }
+        .site-footer-text {color: #ffffff;}
+
+        .site-footer-muted {
+            color: var(--footer-muted);
+        }
+        .site-footer-link {
+            color: var(--footer-text);
+            transition: color 0.2s ease;
+        }
+        .site-footer-link:hover {
+            color: var(--gold-brand);
+        }
+        .site-footer-legal {
+            color: var(--footer-muted);
+            border-top: 1px solid var(--footer-legal-border);
+        }
+        .site-footer-legal-link {
+            color: var(--footer-muted);
+            transition: color 0.2s ease;
+        }
+        .site-footer-legal-link:hover {
+            color: var(--footer-link-hover);
+        }
+        .site-footer .social-circle,
+        .site-footer .social-circle.solid {
+            border-color: var(--footer-social-bg);
+            background-color: var(--footer-social-bg);
+            color: var(--footer-social-text);
+        }
+        .back-to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 0, 0, 0.14);
+            background: #111111;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 55;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+        }
+        .back-to-top:hover {
+            background: #2a2a2a;
+        }
+        .back-to-top.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 5px; }
@@ -135,21 +263,206 @@
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .product_windows {
+            background-color: #b69a62;
+        }
+        .shop-card-image {
+            height: 425px;
+        }
+        .shop-price {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 2px;
+            color: #1f2530;
+            line-height: 1;
+        }
+        .shop-price .currency {
+            font-size: 0.82em;
+        }
+        .claim-hero {
+            background-image:
+                linear-gradient(to bottom, rgba(8, 8, 8, 0.68), rgba(8, 8, 8, 0.68)),
+                url('imagenes/galeria_4.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .contact-panel input,
+        .contact-panel select,
+        .contact-panel textarea {
+            background: #f7f7f7;
+            border: 1px solid #3f3f3f;
+            border-radius: 6px;
+            color: #121212;
+            font-size: 12px;
+            width: 100%;
+            padding: 10px 12px;
+            outline: none;
+        }
+        .contact-panel input:focus,
+        .contact-panel select:focus,
+        .contact-panel textarea:focus {
+            border-color: #c5a059;
+            box-shadow: 0 0 0 1px #c5a059;
+        }
+        .contact-panel input::placeholder,
+        .contact-panel textarea::placeholder {
+            color: #8a8a8a;
+        }
+
+        #main-nav.nav-scrolled button:hover{
+            color: #ffcc00;
+        }
+        #main-nav.nav-scrolled a.nav-cta:hover {
+            color: #ffffff;
+        }
+
+        .hero-title {
+            text-wrap: balance;
+        }
+
+        @media (max-width: 1024px) {
+            .shop-card-image {
+                height: 340px;
+            }
+        }
+        @media (min-width: 768px) {
+            .portfolio-row-two-card {
+                height: 420px;
+            }
+        }
+        @media (max-width: 768px) {
+            .shop-card-image {
+                height: 300px;
+            }
+            .btn-luxury {
+                letter-spacing: 0.18em;
+                font-size: 9px;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.08;
+            }
+            .hero-subtitle {
+                letter-spacing: 0.24em;
+                line-height: 1.8;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .lang-toggle {
+                display: none;
+            }
+            .nav-shell {
+                padding-left: 0.85rem;
+                padding-right: 0.85rem;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                align-items: center;
+                column-gap: 0.9rem;
+            }
+            .nav-brand {
+                margin-left: -1px;
+            }
+            .nav-left {
+                flex: 1 1 auto;
+                min-width: 0;
+                justify-content: flex-start;
+                overflow: hidden;
+            }
+            .nav-right {
+                flex: 0 0 auto;
+                justify-content: flex-end;
+                gap: 0.6rem;
+            }
+            .nav-icons {
+                gap: 0.85rem;
+            }
+            .nav-icons button,
+            .nav-icons .relative {
+                width: 24px;
+                display: inline-flex;
+                justify-content: center;
+            }
+            .logo-light,
+            .logo-dark {
+                max-width: 210px;
+                height: 30px;
+            }
+            .hero-title {
+                font-size: 2.1rem;
+            }
+            .hero-subtitle {
+                font-size: 9px;
+                letter-spacing: 0.2em;
+            }
+            .shop-price {
+                font-size: 34px;
+            }
+            .portfolio-overlay {
+                padding: 1.25rem;
+            }
+            .contact-panel input,
+            .contact-panel select,
+            .contact-panel textarea {
+                font-size: 11px;
+                padding: 9px 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #main-nav {
+                height: 76px;
+            }
+            .back-to-top {
+                right: 14px;
+                bottom: 14px;
+                width: 40px;
+                height: 40px;
+            }
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            .hero-subtitle {
+                letter-spacing: 0.16em;
+            }
+            .hero-content {
+                padding-top: 5.5rem;
+            }
+            .footer-legal {
+                padding-top: 1rem;
+                gap: 0.9rem;
+            }
+            .logo-light,
+            .logo-dark {
+                max-width: 190px;
+                height: 26px;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .hero-content {
+                padding-top: 6rem;
+            }
+            .hero-title {
+                font-size: 1.75rem;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- NAVEGACIÓN -->
     <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 h-24 flex items-center">
-        <div class="max-w-7xl mx-auto w-full px-8 flex justify-between items-center">
-            <div class="flex flex-col items-center group cursor-pointer">
-                <a href="#" class="flex items-center cursor-pointer">
-                    <img src="https://adolfogelabert.github.io/lmcflowers/images/logo-demo-2.svg" alt="LMC Flowers" class="h-12 w-auto logo-light">
-                    <img src="https://adolfogelabert.github.io/lmcflowers/images/logo-demo-3.svg" alt="LMC Flowers" class="h-12 w-auto logo-dark">
+        <div class="nav-shell max-w-7xl mx-auto w-full px-6 md:px-8 flex justify-between items-center">
+            <div class="nav-left flex flex-col items-center group cursor-pointer">
+                <a href="#" class="nav-brand flex items-center cursor-pointer">
+                    <img src="images/logo-demo-2.svg" alt="LMC Flowers" class="h-10 max-[480px]:h-8 md:h-12 w-auto logo-light">
+                    <img src="images/logo-demo-3.svg" alt="LMC Flowers" class="h-10 max-[480px]:h-8 md:h-12 w-auto logo-dark">
                 </a>
             </div>
 
-            <div class="hidden lg:flex items-center space-x-10 text-[10px] font-medium uppercase tracking-[0.25em]">
+            <div class="hidden lg:flex items-center space-x-8 text-[9px] font-medium uppercase tracking-[0.26em]">
                 <a href="#" class="hover:text-gold-brand transition relative after:content-[''] after:absolute after:w-0 after:h-[1px] after:bg-gold-brand after:left-0 after:-bottom-1 hover:after:w-full after:transition-all">Inicio</a>
                 <a href="#servicios" class="hover:text-gold-brand transition">Servicios</a>
                 <a href="#portfolio" class="hover:text-gold-brand transition">Portafolio</a>
@@ -157,8 +470,11 @@
                 <a href="#blog" class="hover:text-gold-brand transition">Diario</a>
             </div>
 
-            <div class="flex items-center space-x-6">
-                <div class="flex items-center space-x-4">
+            <div class="nav-right flex items-center md:space-x-6">
+                <div class="nav-icons flex items-center gap-2 md:gap-4">
+                    <button id="mobile-menu-open" class="md:hidden hover:text-gold-brand transition" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu-modal">
+                        <i data-lucide="menu" class="w-4 h-4"></i>
+                    </button>
                     <button class="hover:text-gold-brand transition"><i data-lucide="search" class="w-4 h-4"></i></button>
                     <div class="relative cursor-pointer hover:text-gold-brand transition">
                         <i data-lucide="shopping-cart" class="w-4 h-4"></i>
@@ -166,29 +482,54 @@
                     </div>
                 </div>
                 <div class="hidden md:block h-6 w-[0.5px] bg-gray-200 mx-2"></div>
-                <a href="#contacto" class="hidden md:block btn-luxury border border-black/10 px-6 py-2.5 hover:bg-black hover:text-white hover:border-black">Cotizar ahora</a>
-                <button class="text-[9px] font-bold opacity-40 hover:opacity-100 transition uppercase tracking-tighter">EN</button>
+                <a href="#contacto" class="hidden md:block nav-cta btn-luxury border border-black/10 px-5 py-2 hover:bg-black hover:text-white hover:border-black">Cotizar ahora</a>
+                <button class="lang-toggle text-[9px] font-bold opacity-40 hover:opacity-100 transition uppercase tracking-tighter">EN</button>
             </div>
         </div>
     </nav>
 
+    <!-- MENÚ MOBILE MODAL -->
+    <div id="mobile-menu-modal" class="mobile-menu-modal md:hidden" aria-hidden="true">
+        <div class="mobile-menu-panel">
+            <div class="px-5 py-5 border-b border-gray-100 flex items-center justify-between">
+                <img src="images/logo-demo-3.svg" alt="LMC Flowers" class="h-8 w-auto">
+                <button id="mobile-menu-close" class="hover:text-gold-brand transition" aria-label="Cerrar menu">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="px-6 pt-7 pb-6 flex-1 overflow-y-auto">
+                <nav class="flex flex-col gap-5 text-[11px] uppercase tracking-[0.24em] font-medium text-[#1a1a1a]">
+                    <a href="#" class="mobile-menu-link">Inicio</a>
+                    <a href="#servicios" class="mobile-menu-link">Servicios</a>
+                    <a href="#portfolio" class="mobile-menu-link">Portafolio</a>
+                    <a href="#shop" class="mobile-menu-link">Shop</a>
+                    <a href="#blog" class="mobile-menu-link">Diario</a>
+                    <a href="#contacto" class="mobile-menu-link">Contacto</a>
+                </nav>
+
+                <a href="#contacto" class="mobile-menu-link btn-luxury mt-8 inline-block border border-black px-5 py-3 text-center hover:bg-black hover:text-white">Cotizar ahora</a>
+            </div>
+        </div>
+    </div>
+
     <!-- HERO SECTION -->
-    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+    <header class="relative min-h-[92vh] md:h-screen w-full flex items-center justify-center overflow-hidden bg-black">
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=2000" alt="LMC Flowers Hero" class="w-full h-full object-cover opacity-50 scale-105 animate-[subtle-zoom_20s_infinite_alternate]">
+            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=2000" alt="LMC Flowers Hero" class="w-full h-full object-cover opacity-60 scale-105 animate-[subtle-zoom_20s_infinite_alternate]">
         </div>
         
-        <div class="relative z-10 text-center text-white px-6">
-            <h1 class="text-4xl md:text-7xl serif italic mb-10 leading-[1.1] md:leading-[1.15]">
+        <div class="hero-content relative z-10 text-center text-white px-6 pt-10 md:pt-0">
+            <h1 class="hero-title text-5xl md:text-7xl serif italic mb-8 md:mb-10 leading-[1.08] md:leading-[1.15]">
                 <span class="hero-underline">Flores que dicen lo que las</span><br>
                 <span class="hero-underline">palabras no pueden.</span>
             </h1>
-            <p class="text-[10px] md:text-xs tracking-[0.4em] font-light uppercase max-w-xl mx-auto leading-loose mb-12 opacity-80">
+            <p class="hero-subtitle text-[10px] md:text-xs tracking-[0.35em] font-light uppercase max-w-xl mx-auto leading-loose mb-10 md:mb-12 opacity-80">
                 Diseño floral de alta gama para bodas y eventos corporativos en el sur de la Florida.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="#portfolio" class="btn-luxury px-10 py-4 border border-white/30 hover:bg-white hover:text-black hover:border-white">Ver Portafolio</a>
-                <a href="#contacto" class="btn-luxury px-10 py-4 bg-white text-black hover:bg-gold-brand hover:text-white hover:border-gold-brand">Contáctanos</a>
+                <a href="#portfolio" class="btn-luxury w-full sm:w-auto max-w-[280px] sm:max-w-none mx-auto px-10 py-4 border border-white/30 hover:bg-white hover:text-black hover:border-white">Ver Portafolio</a>
+                <a href="#contacto" class="hero-cta-invert btn-luxury w-full sm:w-auto max-w-[280px] sm:max-w-none mx-auto px-10 py-4">Contáctanos</a>
             </div>
         </div>
 
@@ -200,8 +541,8 @@
     </header>
 
     <!-- CATEGORY STRIP -->
-    <div class="bg-white border-b border-gray-100 py-7">
-        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center text-[9px] md:text-[10px] tracking-[0.45em] uppercase opacity-40 font-bold whitespace-nowrap overflow-x-auto no-scrollbar">
+    <div class="bg-white border-b border-gray-100 py-6">
+        <div class="max-w-7xl mx-auto px-5 md:px-8 flex justify-between items-center text-[8px] md:text-[9px] tracking-[0.4em] uppercase opacity-45 font-semibold whitespace-nowrap overflow-x-auto no-scrollbar">
             <span>Bodas</span><span class="mx-2">•</span>
             <span>Quinceañeras</span><span class="mx-2">•</span>
             <span>Lanzamientos</span><span class="mx-2">•</span>
@@ -212,17 +553,17 @@
     </div>
 
     <!-- SECCIÓN SERVICIOS -->
-    <section id="servicios" class="py-32 bg-stone-50/50">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start mb-20">
+    <section id="servicios" class="pt-8 pb-20 md:py-32 bg-[#f2f2f2]">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left mb-16 md:mb-20">
                 <div class="max-w-2xl">
                     <span class="text-[10px] tracking-[0.5em] text-gold-brand font-bold uppercase mb-4 block">Nuestro Expertizaje</span>
-                    <h2 class="text-4xl md:text-5xl serif italic mb-6">Floral Design & Event Production</h2>
+                    <h2 class="text-4xl md:text-5xl serif italic mb-6 leading-[1.05]">Diseño floral & producción de eventos</h2>
                 </div>
-                <p class="text-xs text-gray-400 uppercase tracking-widest font-medium mt-4 border-b border-gray-200 pb-2">Since 2024 • Miami FL</p>
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-medium mt-4 border-b border-gray-200 pb-2 mx-auto md:mx-0">Desde 2024 • Miami, Florida</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-12">
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
                 <div class="group cursor-pointer">
                     <div class="image-container aspect-[3/4] mb-8">
                         <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800" alt="Bodas" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
@@ -230,7 +571,7 @@
                     <div class="flex justify-between items-end">
                         <div>
                             <h3 class="text-xl serif italic mb-2">Bodas de Destino</h3>
-                            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Full Service Decoration</p>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Decoración con servicio completo</p>
                         </div>
                         <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all text-gold-brand"></i>
                     </div>
@@ -264,11 +605,10 @@
             </div>
         </div>
     </section>
-
     <!-- NUEVA SECCIÓN: PORTFOLIO (GRID ASIMÉTRICO) -->
-    <section id="portfolio" class="py-32 bg-white">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-24">
+    <section id="portfolio" class="py-24 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-center mb-16 md:mb-20">
                 <span class="text-[10px] tracking-[0.6em] text-gray-400 font-bold uppercase mb-4 block">Visual Diary</span>
                 <h2 class="text-4xl md:text-6xl serif italic">Nuestras Creaciones</h2>
             </div>
@@ -278,90 +618,212 @@
                 
                 <!-- Item 1: Large Vertical -->
                 <div class="md:col-span-4 portfolio-item relative group cursor-pointer overflow-hidden aspect-[3/4]">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200" alt="The Vizcaya Wedding" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <img src="imagenes/galeria_1.jpg" alt="La boda de Vizcaya" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
                     <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
                         <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Coral Gables</p>
-                        <h4 class="text-2xl serif italic mb-4">The Vizcaya Wedding</h4>
+                        <h4 class="text-2xl serif italic mb-4">La boda de Vizcaya</h4>
                         <div class="w-10 h-[1px] bg-gold-brand"></div>
                     </div>
                 </div>
 
                 <!-- Item 2: Horizontal -->
                 <div class="md:col-span-8 portfolio-item relative group cursor-pointer overflow-hidden aspect-video md:aspect-auto">
-                    <img src="https://images.unsplash.com/photo-1465495910483-0d6749ee9f4a?auto=format&fit=crop&q=80&w=1200" alt="Corporate Gala" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <img src="imagenes/galeria_2.jpg" alt="Gala corporativa" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
                     <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
                         <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Miami Beach</p>
-                        <h4 class="text-2xl serif italic mb-4">Art Basel Gala 2025</h4>
+                        <h4 class="text-2xl serif italic mb-4">Gala Art Basel 2025</h4>
                         <div class="w-10 h-[1px] bg-gold-brand"></div>
                     </div>
                 </div>
 
                 <!-- Item 3: Square -->
-                <div class="md:col-span-5 portfolio-item relative group cursor-pointer overflow-hidden aspect-square">
-                    <img src="https://images.unsplash.com/photo-1507074125130-c3095368a6f3?auto=format&fit=crop&q=80&w=1000" alt="Minimalist Table" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                <div class="md:col-span-5 portfolio-item portfolio-row-two-card relative group cursor-pointer overflow-hidden aspect-square md:aspect-auto">
+                    <img src="imagenes/galeria_9.jpg" alt="Minimalismo" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
                     <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
-                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Minimalism</p>
-                        <h4 class="text-2xl serif italic mb-4">White Orchid Soirée</h4>
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Minimalismo</p>
+                        <h4 class="text-2xl serif italic mb-4">Velada de orquídeas blancas</h4>
                         <div class="w-10 h-[1px] bg-gold-brand"></div>
                     </div>
                 </div>
 
                 <!-- Item 4: Portrait -->
-                <div class="md:col-span-3 portfolio-item relative group cursor-pointer overflow-hidden aspect-[3/4]">
-                    <img src="https://images.unsplash.com/photo-1525268771113-32d9e9020a97?auto=format&fit=crop&q=80&w=1000" alt="Engagement" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                <div class="md:col-span-3 portfolio-item portfolio-row-two-card relative group cursor-pointer overflow-hidden aspect-square md:aspect-auto">
+                    <img src="imagenes/galeria_hero-2.jpg" alt="Diseño" class="w-full h-full md:min-h-full object-cover portfolio-focus-mid transition-transform duration-1000 group-hover:scale-105">
                     <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
-                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Design</p>
-                        <h4 class="text-2xl serif italic mb-4">The Engagement Bloom</h4>
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Diseño</p>
+                        <h4 class="text-2xl serif italic mb-4">El florecimiento del compromiso</h4>
                         <div class="w-10 h-[1px] bg-gold-brand"></div>
                     </div>
                 </div>
 
                 <!-- Item 5: Small -->
-                <div class="md:col-span-4 portfolio-item relative group cursor-pointer overflow-hidden aspect-square md:aspect-auto">
-                    <img src="https://images.unsplash.com/photo-1544592732-83bb662a2ad7?auto=format&fit=crop&q=80&w=1000" alt="Luxury Bouquet" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                <div class="md:col-span-4 portfolio-item portfolio-row-two-card relative group cursor-pointer overflow-hidden aspect-square md:aspect-auto">
+                    <img src="imagenes/galeria_8.jpg" alt="Hecho a la medida" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
                     <div class="portfolio-overlay absolute inset-0 opacity-0 flex flex-col justify-end p-10 text-white">
-                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Bespoke</p>
-                        <h4 class="text-2xl serif italic mb-4">Velvet Rose Concept</h4>
+                        <p class="text-[9px] uppercase tracking-[0.3em] mb-2 opacity-70 font-bold">Hecho a la medida</p>
+                        <h4 class="text-2xl serif italic mb-4">Concepto de rosa de terciopelo</h4>
                         <div class="w-10 h-[1px] bg-gold-brand"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Botón Ver Más -->
-            <div class="mt-20 text-center">
+            <div class="mt-16 md:mt-20 text-center">
                 <a href="#" class="btn-luxury inline-block px-12 py-5 border border-black hover:bg-black hover:text-white transition-all">Ver Galería Completa</a>
             </div>
         </div>
     </section>
 
+    <!-- SECCIÓN SHOP -->
+    <section id="shop" class="product_windows py-20 md:py-24">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-center mb-12 md:mb-14 text-white/90">
+                <span class="text-[9px] tracking-[0.45em] font-semibold uppercase mb-3 block">Shop Productos</span>
+                <h2 class="text-4xl md:text-5xl serif italic">Arreglos</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10 md:gap-16 max-w-5xl mx-auto">
+                <article class="text-center">
+                    <div class="overflow-hidden mb-5 bg-white/10">
+                        <img src="imagenes/galeria_6.jpg" alt="Arreglo premium blush" class="shop-card-image w-full object-cover">
+                    </div>
+                    <p class="serif text-[38px] shop-price mb-4"><span class="currency">$</span>99.99</p>
+                    <button class="w-full btn-luxury bg-[#20262d] text-white py-3 border border-[#20262d] hover:bg-transparent hover:text-white">Agregar al carro</button>
+                </article>
+
+                <article class="text-center">
+                    <div class="overflow-hidden mb-5 bg-white/10">
+                        <img src="imagenes/galeria_7.jpg" alt="Arreglo premium garden" class="shop-card-image w-full object-cover">
+                    </div>
+                    <p class="serif text-[38px] shop-price mb-4"><span class="currency">$</span>99.99</p>
+                    <button class="w-full btn-luxury bg-[#20262d] text-white py-3 border border-[#20262d] hover:bg-transparent hover:text-white">Agregar al carro</button>
+                </article>
+
+                <article class="text-center">
+                    <div class="overflow-hidden mb-5 bg-white/10">
+                        <img src="imagenes/galeria_3.jpg" alt="Arreglo premium coral" class="shop-card-image w-full object-cover">
+                    </div>
+                    <p class="serif text-[38px] shop-price mb-4"><span class="currency">$</span>99.99</p>
+                    <button class="w-full btn-luxury bg-[#20262d] text-white py-3 border border-[#20262d] hover:bg-transparent hover:text-white">Agregar al carro</button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLAIM HERO -->
+    <section class="claim-hero py-20 md:py-24">
+        <div class="max-w-4xl mx-auto px-5 md:px-8 text-center text-white">
+            <h3 class="serif italic text-4xl md:text-6xl leading-tight">"Cada flor tiene su historia.<br>Nosotros la contamos por ti."</h3>
+            <p class="mt-6 text-[10px] uppercase tracking-[0.35em] text-white/70">LMC Flowers Miami</p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="bg-[#1d1e20] py-16 md:py-24 text-white">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                <div>
+                    <span class="text-[10px] tracking-[0.35em] uppercase text-white/60 block mb-8">Contacto</span>
+                    <h3 class="serif italic text-5xl md:text-7xl leading-[0.9] mb-10">Hagamos algo hermoso juntos.</h3>
+                    <ul class="text-white/80 leading-8">
+                        <li>Miami, Florida - USA</li>
+                        <li>Lunes - Sabado - 9am - 7pm</li>
+                        <li>WhatsApp disponible</li>
+                        <li>info@lmcflowers.com</li>
+                    </ul>
+                </div>
+
+                <form class="contact-panel space-y-5" action="#" method="post">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="nombre" class="block text-[10px] uppercase tracking-[0.2em] mb-2 text-white/75">Nombre</label>
+                            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+                        </div>
+                        <div>
+                            <label for="telefono" class="block text-[10px] uppercase tracking-[0.2em] mb-2 text-white/75">Telefono</label>
+                            <input id="telefono" name="telefono" type="tel" placeholder="+1 (305) 000-0000">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-[10px] uppercase tracking-[0.2em] mb-2 text-white/75">Email</label>
+                        <input id="email" name="email" type="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div>
+                        <label for="tipo-evento" class="block text-[10px] uppercase tracking-[0.2em] mb-2 text-white/75">Tipo de evento</label>
+                        <select id="tipo-evento" name="tipo-evento" required>
+                            <option value="" selected disabled>Tipo de evento</option>
+                            <option value="boda">Boda</option>
+                            <option value="corporativo">Corporativo</option>
+                            <option value="social">Social</option>
+                            <option value="quince">Quinceanera</option>
+                        </select>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="fecha" class="block text-[10px] uppercase tracking-[0.2em] mb-2 text-white/75">Fecha del evento</label>
+                            <input id="fecha" name="fecha" type="text" placeholder="mm / dd / aaaa">
+                        </div>
+                        <div>
+                            <label for="presupuesto" class="block text-[10px] uppercase tracking-[0.2em] mb-2 text-white/75">Presupuesto aprox</label>
+                            <input id="presupuesto" name="presupuesto" type="text" placeholder="$ USD">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="mensaje" class="block text-[10px] uppercase tracking-[0.2em] mb-2 text-white/75">Cuentanos sobre tu evento</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describenos tu vision..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full btn-luxury border border-white/40 py-4 text-white hover:bg-white hover:text-black">Enviar solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN BLOG (PLACEHOLDER ESTRUCTURAL) -->
+    <section id="blog" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-5 md:px-8 text-center">
+            <span class="text-[10px] tracking-[0.5em] text-gray-400 font-bold uppercase mb-4 block">Blog</span>
+            <h2 class="text-3xl md:text-5xl serif italic mb-6">Diario Floral</h2>
+            <p class="text-xs uppercase tracking-[0.25em] text-gray-400">Proximamente</p>
+        </div>
+    </section>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Volver arriba" title="Volver arriba">
+        <i data-lucide="arrow-up" class="w-4 h-4"></i>
+    </button>
+
     <!-- FOOTER -->
-    <footer class="bg-white pt-32 pb-16 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="grid md:grid-cols-4 gap-20 mb-24">
+    <footer class="site-footer pt-20 md:pt-24 pb-14">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="grid md:grid-cols-4 gap-12 md:gap-20 mb-16 md:mb-20">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex flex-col mb-10">
                         <a href="#" class="block mb-10">
-                            <img src="https://adolfogelabert.github.io/lmcflowers/images/logo-demo-3.svg" alt="LMC Flowers Logo" class="h-14 w-auto">
+                            <img src="images/logo-demo-2.svg" alt="LMC Flowers Logo" class="h-12 w-auto">
                         </a>
                     </div>
-                    <p class="text-xs text-gray-400 leading-loose mb-10 max-w-xs font-light">
+                    <p class="site-footer-text text-[11px] leading-loose mb-10 max-w-xs font-light">
                         Elevando la estética de tus celebraciones más importantes a través del arte floral y la producción impecable.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] mb-10 text-black">Explorar</h4>
-                    <ul class="text-[10px] text-gray-400 space-y-6 uppercase tracking-[0.2em] font-medium">
-                        <li><a href="#servicios" class="hover:text-gold-brand transition">Servicios</a></li>
-                        <li><a href="#portfolio" class="hover:text-gold-brand transition">Galería</a></li>
-                        <li><a href="#shop" class="hover:text-gold-brand transition">Shop</a></li>
-                        <li><a href="#blog" class="hover:text-gold-brand transition">Diario</a></li>
+                    <h4 class="site-footer-heading text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Explorar</h4>
+                    <ul class="site-footer-text text-[10px] space-y-6 uppercase tracking-[0.2em] font-medium">
+                        <li><a href="#servicios" class="site-footer-link">Servicios</a></li>
+                        <li><a href="#portfolio" class="site-footer-link">Galería</a></li>
+                        <li><a href="#shop" class="site-footer-link">Shop</a></li>
+                        <li><a href="#blog" class="site-footer-link">Diario</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] mb-10 text-black">Contacto</h4>
-                    <ul class="text-[10px] text-gray-400 space-y-5 uppercase tracking-[0.15em] font-medium leading-relaxed">
+                    <h4 class="site-footer-heading text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Contacto</h4>
+                    <ul class="site-footer-text text-[10px] space-y-5 uppercase tracking-[0.15em] font-medium leading-relaxed">
                         <li>Miami, FL, USA</li>
                         <li>info@lmcflowers.com</li>
                         <li>+1 (305) 555 1234</li>
@@ -369,7 +831,7 @@
                 </div>
 
                 <div>
-                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] mb-10 text-black uppercase">Redes Sociales</h4>
+                    <h4 class="site-footer-heading text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Redes Sociales</h4>
                     <div class="flex space-x-4">
                         <a href="#" class="social-circle solid">
                             <i class="fab fa-instagram text-sm"></i>
@@ -384,15 +846,15 @@
                             <i class="fab fa-tiktok text-sm"></i>
                         </a>
                     </div>
-                    <p class="mt-8 text-[9px] text-gray-300 uppercase tracking-widest italic">Follow for daily inspiration</p>
+                    <p class="site-footer-muted mt-8 text-[9px] uppercase tracking-widest italic">Follow for daily inspiration</p>
                 </div>
             </div>
 
-            <div class="pt-10 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-gray-300 gap-6">
+            <div class="footer-legal site-footer-legal pt-8 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.16em] md:tracking-[0.28em] gap-6 text-center md:text-left">
                 <p>© 2026 LMC Group Miami. Crafted with excellence.</p>
                 <div class="flex space-x-10">
-                    <a href="#" class="hover:text-black transition">Políticas</a>
-                    <a href="#" class="hover:text-black transition">Términos</a>
+                    <a href="#" class="site-footer-legal-link">Políticas</a>
+                    <a href="#" class="site-footer-legal-link">Términos</a>
                 </div>
             </div>
         </div>
@@ -401,6 +863,29 @@
     <script>
         // Inicializar Iconos
         lucide.createIcons();
+
+        const backToTopButton = document.getElementById('back-to-top');
+
+        const smoothScrollToTop = (duration = 1100) => {
+            const startY = window.scrollY || window.pageYOffset;
+            if (startY <= 0) return;
+
+            const startTime = performance.now();
+            const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+            const step = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = easeInOutCubic(progress);
+                window.scrollTo(0, Math.round(startY * (1 - eased)));
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            };
+
+            requestAnimationFrame(step);
+        };
 
         // Scroll Effect
         window.addEventListener('scroll', () => {
@@ -413,6 +898,66 @@
                 nav.classList.remove('nav-scrolled');
                 nav.classList.add('h-24');
                 nav.classList.remove('h-20');
+            }
+
+            if (backToTopButton) {
+                if (window.scrollY > 360) {
+                    backToTopButton.classList.add('is-visible');
+                } else {
+                    backToTopButton.classList.remove('is-visible');
+                }
+            }
+        });
+
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', () => smoothScrollToTop(1100));
+        }
+
+        // Mobile menu modal
+        const menuOpenButton = document.getElementById('mobile-menu-open');
+        const menuCloseButton = document.getElementById('mobile-menu-close');
+        const mobileMenuModal = document.getElementById('mobile-menu-modal');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        const openMobileMenu = () => {
+            if (!mobileMenuModal) return;
+            mobileMenuModal.classList.add('is-open');
+            document.body.classList.add('menu-open');
+            mobileMenuModal.setAttribute('aria-hidden', 'false');
+            if (menuOpenButton) {
+                menuOpenButton.setAttribute('aria-expanded', 'true');
+            }
+        };
+
+        const closeMobileMenu = () => {
+            if (!mobileMenuModal) return;
+            mobileMenuModal.classList.remove('is-open');
+            document.body.classList.remove('menu-open');
+            mobileMenuModal.setAttribute('aria-hidden', 'true');
+            if (menuOpenButton) {
+                menuOpenButton.setAttribute('aria-expanded', 'false');
+            }
+        };
+
+        if (menuOpenButton) {
+            menuOpenButton.addEventListener('click', openMobileMenu);
+        }
+        if (menuCloseButton) {
+            menuCloseButton.addEventListener('click', closeMobileMenu);
+        }
+        if (mobileMenuModal) {
+            mobileMenuModal.addEventListener('click', (event) => {
+                if (event.target === mobileMenuModal) {
+                    closeMobileMenu();
+                }
+            });
+        }
+        mobileMenuLinks.forEach((link) => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && mobileMenuModal && mobileMenuModal.classList.contains('is-open')) {
+                closeMobileMenu();
             }
         });
     </script>
